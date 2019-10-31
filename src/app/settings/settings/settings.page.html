@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>App Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="main">
+  <ion-list no-border>
+    <ion-list-header>
+      <ion-text color="dark">
+        <h5>General</h5>
+      </ion-text>
+    </ion-list-header>
+    <ion-item>
+      <ion-icon name="settings" slot="start" color="dark"></ion-icon>
+      <ion-label color="dark">App Language</ion-label>
+      <ion-select [(ngModel)]="appLanguage">
+        <ion-select-option
+          *ngFor="let language of languages"
+          [value]="language"
+          >{{ language }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="notifications" slot="start" color="dark"></ion-icon>
+      <ion-label class="label" color="dark"> Enable notifications </ion-label>
+      <ion-toggle
+        [(ngModel)]="notification"
+        (click)="checkboxToggle('notification')"
+      ></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-text color="dark">
+        <h5>Other</h5>
+      </ion-text>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-icon name="mail" slot="start" color="dark"></ion-icon>
+      <ion-label class="label" color="dark">Enable History</ion-label>
+      <ion-toggle
+        [(ngModel)]="enableHistory"
+        (click)="checkboxToggle('enableHistory')"
+      ></ion-toggle>
+    </ion-item>
+
+    <ion-button
+      class="logoutbtn1"
+      icon-left
+      size="small"
+      shape="round"
+      color="medium"
+      (click)="logout()"
+    >
+      <ion-icon name="log-out"></ion-icon>
+      <ion-text class="editprofile1" color="dark">
+        <strong> logout</strong>
+      </ion-text>
+    </ion-button>
+  </ion-list>
+</ion-content>

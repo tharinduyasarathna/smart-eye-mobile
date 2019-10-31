@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar><br>
+    <ion-title style="color: mediumspringgreen;text-align:center"><h1>SMART EYE</h1></ion-title>
+    <hr />
+    <div style="margin: 4px">
+      <p style="color: #ffc312; text-align:center;margin: 4px">
+        No one can build his security upon the nobleness of another person
+      </p><br>
+    </div>
+        
+        
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+    <br>
+  <form
+    class="form"
+    [formGroup]="validations_form"
+    (ngSubmit)="loginUser(validations_form.value)"
+    style="background-color: rgba(0, 0, 0, 0.5);padding: 5px"
+  >
+  <h4 style="color: white;text-align: center">Sign In </h4>
+  
+    <ion-item>
+      <ion-label position="floating" color="light">
+        <ion-icon name="mail" item-start></ion-icon>
+        Email</ion-label
+      >
+      <ion-input
+        type="text"
+        color="secondary"
+        formControlName="email"
+      ></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div
+          class="error-message"
+          *ngIf="
+            validations_form.get('email').hasError(validation.type) &&
+            (validations_form.get('email').dirty ||
+              validations_form.get('email').touched)
+          "
+        >
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating" color="light">
+        <ion-icon name="lock" item-start></ion-icon>
+        Password</ion-label
+      >
+      <ion-input
+        type="password"
+        color="secondary"
+        formControlName="password"
+        class="form-controll"
+        required
+      ></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div
+          class="error-message"
+          *ngIf="
+            validations_form.get('password').hasError(validation.type) &&
+            (validations_form.get('password').dirty ||
+              validations_form.get('password').touched)
+          "
+        >
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <p text-right tappable (click)="forgotPass()" class="paz">
+      <ion-text color="light" class="text08">
+        <strong>Forgot Pass?</strong>
+      </ion-text>
+    </p>
+
+    <ion-button
+      class="submit-btn "
+      type="submit"
+      icon-left
+      size="medium"
+      expand="full"
+      shape="round"
+      color="light"
+      [disabled]="!validations_form.valid"
+    >
+      <ion-icon name="log-in"></ion-icon>
+      Log In</ion-button
+    ><br>
+
+    <label class="error-message">{{ errorMessage }}</label>
+  </form>
+</ion-content>
+
+<ion-footer style="position:fixed;bottom:0px" >
+    <ion-toolbar > 
+      <ion-title><p style="text-align: center;font-size: 8px">Support : tharinduyasarathna@gmail.com | +94715887573</p></ion-title>
+    </ion-toolbar>
+  </ion-footer>

@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>
+      <ion-text>
+        <ion-text text-center color="light" class="fw700">Smart Eye</ion-text>
+      </ion-text>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button
+        size="small"
+        shape="round"
+        color="light"
+        (click)="notifications()"
+      >
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge color="danger" slot="end">2</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item style="background-color: rgba(0, 0, 0, 0.5);padding: 5px">
+    <ion-icon name="notifications" slot="start" color="light"></ion-icon>
+    <ion-label class="label" color="light"> Trigger Alarm </ion-label>
+    <ion-toggle
+      [(ngModel)]="triggeralarm"
+      (click)="checkboxToggle('triggeralarm')"
+    ></ion-toggle>
+  </ion-item>
+  <br />
+  <div class="wrapper">
+    <ion-card style="background-color: green ">
+      <img [src]="lastImg" />
+      <ion-card-header>
+        <!-- <ion-card-subtitle>Destination</ion-card-subtitle> -->
+        <ion-card-title style="text-align: center;color: white;">Recently Detected Person</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+</ion-content>

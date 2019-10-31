@@ -1,0 +1,66 @@
+<ion-app>
+  <ion-router-outlet></ion-router-outlet>
+
+  <ion-split-pane>
+    <ion-menu>
+      <ion-header>
+        <ion-toolbar class="user-profile">
+          <ion-item margin-bottom>
+            <ion-label>
+              <ion-text color="dark">
+                <h1>
+                  <strong><ion-icon name="contact"></ion-icon>&nbsp;{{ currentUser }}</strong>
+                </h1>
+              </ion-text>
+              <ion-text color="secondary">
+                <h3>
+                  {{ currentUserEmail }}
+                </h3>
+              </ion-text>
+            </ion-label>
+          </ion-item>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content class="side-menu-content">
+        <ion-list>
+          <ion-list-header color="dark">
+            <ion-label>Menu</ion-label>
+          </ion-list-header>
+
+          <ion-menu-toggle
+            class="navbackground"
+            auto-hide="false"
+            *ngFor="let p of appPages"
+          >
+            <ion-item [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon" color="dark"></ion-icon>
+              <ion-label color="dark">
+                {{ p.title }}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <br />
+
+          <ion-menu-toggle class="mto" auto-hide="false">
+            <ion-button
+              class="logoutbtn"
+              icon-left
+              size="small"
+              shape="round"
+              color="medium"
+              (click)="logout()"
+            >
+              <ion-icon name="log-out"></ion-icon>
+              <ion-text class="editprofile">
+                <strong> logout</strong>
+              </ion-text>
+            </ion-button>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
